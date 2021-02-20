@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     botao_criar_tarefa.addEventListener("click", () => {
         let input_titulo_tarefa = document.querySelector("#input-criar-nome-tarefa")
         let input_info_tarefa = document.querySelector("#info-criar-tarefa")
-        if (input_titulo_tarefa.value.length > 0 && input_info_tarefa.value.length > 0) {
+        if (input_titulo_tarefa.value.length > 0) {
             let nome_materia = card_materia_atual.dataset.nome_materia
             let card_body = card_materia_atual.children[0].children[1]
             let lista_tarefas = JSON.parse(localStorage.getItem(nome_materia))
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let lista_tarefas_JSON = JSON.parse(localStorage.getItem(nome_materia))
         let indice_tarefa_atual = coletar_indice_card_tarefa(card_tarefa_atual)
 
-        if (input_titulo_tarefa.value.length > 0 && input_info_tarefa.value.length > 0) {
+        if (input_titulo_tarefa.value.length > 0) {
             card_tarefa_atual.children[0].innerText = input_titulo_tarefa.value
             card_tarefa_atual.children[1].innerText = input_info_tarefa.value
 
