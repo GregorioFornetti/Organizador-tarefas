@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="style.css" rel="stylesheet">
+    <script src='criador_cards.js'></script>
+    <script src="main.js"></script>
+    <title>TODO Matérias</title>
+</head>
+<body>
+    <header class='container-fluid bg-dark'>
+        <div class='row justify-content-center pb-3'>
+            <div class='col-auto'>
+                <h1 class='text-white text-center'>Lista de tarefas</h1>
+                <div class='row justify-content-center gy-1'>
+                    <div class='col-auto'>
+                        <button class='btn btn-success' data-bs-toggle="modal" data-bs-target="#modal-criar-materia">Adicionar nova matéria</button>
+                    </div>
+                    <div class='col-auto'>
+                        <button class='btn btn-danger' id="btn-remover-tarefas-prontas">Remover tarefas prontas</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </header>
+
+    <main class='container'>
+        <div class='row row-cols-xl-2 g-5' id="main-div">
+        </div>
+    </main>
+  
+    <!-- Modal para criação de matéria -->
+    <div class="modal fade" id="modal-criar-materia" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Criar nova matéria</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="input-nome-materia" placeholder="Nome da materia">
+                        <label for="input-nome-materia">Nome da matéria</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-success" id='btn-criar-materia'>Criar nova matéria</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para criar tarefa -->
+    <div class="modal fade" id="modal-criar-tarefa" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Criar nova tarefa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="input-criar-nome-tarefa" placeholder="Titulo da tarefa">
+                        <label for="input-nome-tarefa">Titulo da tarefa</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" id="info-criar-tarefa" style="height: 200px" placeholder="info tarefa"></textarea>
+                        <label for="info-tarefa">Informações sobre tarefa</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-success" id='btn-criar-tarefa'>Criar nova tarefa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar tarefa -->
+    <div class="modal fade" id="modal-editar-tarefa" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Editar tarefa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="input-editar-nome-tarefa" placeholder="name@example.com">
+                        <label for="input-nome-tarefa">Titulo da tarefa</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" id="info-editar-tarefa" style="height: 200px"></textarea>
+                        <label for="info-tarefa">Informações sobre tarefa</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id='btn-editar-tarefa'>Salvar alterações</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal confirmar remoção de matéria -->
+     <div class="modal fade" id="modal-apagar-materia" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalLabel">Apagar matéria</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class='lead'>Você deseja mesmo apagar essa matéria ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Não</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id='btn-apagar-materia'>Sim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
