@@ -6,14 +6,21 @@ header {
     z-index: 100;
     position: fixed;
     top: 0%;
+    opacity: 0.99;
 }
 
 main {
-    margin-top: 150px;
+    padding-top: 150px;
+    min-height: 100vh;
+    padding-bottom: 50px;
 }
 
 @media (max-width:576px) {
     main {
-        margin-top: 200px;
+        padding-top: 200px;
     }
+}
+
+a {
+    text-decoration: none;
 }
