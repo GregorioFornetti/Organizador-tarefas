@@ -64,11 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
             card_tarefa_atual.children[0].innerText = input_titulo_tarefa.value
             card_tarefa_atual.children[1].innerText = input_info_tarefa.value
 
-            lista_tarefas_JSON[indice_tarefa_atual] = {
-                "titulo" : input_titulo_tarefa.value,
-                "info" : input_info_tarefa.value,
-                "concluida" : card_tarefa_atual.dataset.concluida
-            }
+            lista_tarefas_JSON[indice_tarefa_atual].titulo = input_titulo_tarefa.value
+            lista_tarefas_JSON[indice_tarefa_atual].info = input_info_tarefa.value
+
             localStorage.setItem(nome_materia, JSON.stringify(lista_tarefas_JSON))
             alert("Tarefa editada com sucesso !")
         }
