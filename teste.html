@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let card_arrastar
+
+        document.addEventListener("DOMContentLoaded", () => {
+            let box = document.querySelector("#box")
+            box.addEventListener("mousedown", (event) => {
+                card_arrastar = box.cloneNode(true)
+                card_arrastar.style.position = "fixed"
+                document.body.appendChild(card_arrastar)
+                box.remove()
+            })
+
+        })
+
+        document.addEventListener("mousemove", () => {
+            if (card_arrastar) {
+                card_arrastar.style.left = event.clientX + "px"
+                card_arrastar.style.top = event.clientY + "px"
+            }
+        })
+
+        document.addEventListener("mouseleave", () => {
+            console.log("oi")
+        })
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div id='box' style='height: 150px; width: 150px; background-color: red;'>
+    </div>
+</body>
+</html>

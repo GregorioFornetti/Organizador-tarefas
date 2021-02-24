@@ -130,3 +130,4 @@ function colocar_card(main_div, nova_card) {
     }
     main_div.append(nova_card)
 }
+

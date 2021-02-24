@@ -2,13 +2,36 @@
 var card_materia_atual
 var card_tarefa_atual
 
+var clone_card_arrastada
+var offsetX
+var offsetY
+
 function criar_card_materia(titulo_materia) {
     let card = criar_estrutura_card()
     let card_header = card.children[0]
     let card_body = card.children[1]
     let card_footer = card.children[2]
+
     let card_box = document.createElement("div")
     card_box.dataset.nome_materia = titulo_materia
+
+    card_header.draggable = true
+    card_header.addEventListener("dragstart", (e) => {
+        offsetX = e.layerX
+        offsetY = e.layerY
+
+        clone_card_arrastada = card_box.cloneNode(true)
+        clone_card_arrastada.style.position = 'fixed'
+        clone_card_arrastada.style.width = card_box.offsetWidth + 'px'
+        clone_card_arrastada.heigth = card_box.offsetHeight + 'px'
+        clone_card_arrastada.style.zindex = '99999'
+        document.body.append(clone_card_arrastada)
+
+        
+    })
+    card_header.addEventListener("drag", drag)
+    card_header.addEventListener("dragend", dragEnd)
+
     card_body.dataset.nome_materia = titulo_materia
 
     let title = document.createElement("h2")
