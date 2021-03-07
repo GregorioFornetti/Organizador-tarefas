@@ -51,7 +51,7 @@ function criar_card_materia(titulo_materia) {
     botao_apagar.dataset.bsTarget = "#modal-apagar-materia"
 
     card_footer.className += ' bg-dark'
-    card_footer.append(botao_tarefa, botao_apagar)
+    card_footer.append(botao_tarefa, botao_editar, botao_apagar)
 
     card_box.append(card)
     return card_box
