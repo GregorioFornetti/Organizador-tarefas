@@ -41,19 +41,14 @@ function criar_card_materia(titulo_materia) {
     card_header.className += ' bg-dark'
     card_header.appendChild(title)
 
-    let botao_tarefa = criar_botao_card_materia("Criar nova tarefa", "btn-success")
-    botao_tarefa.dataset.bsToggle = "modal"
+    let botao_tarefa = criar_botao_card_materia("Criar nova tarefa", "btn-success", card_box)
     botao_tarefa.dataset.bsTarget = "#modal-criar-tarefa"
-    botao_tarefa.addEventListener("click", () => {
-        card_materia_atual = card_box
-    })
 
-    let botao_apagar = criar_botao_card_materia("Apagar metéria", "btn-danger")
-    botao_apagar.dataset.bsToggle = "modal"
+    let botao_editar = criar_botao_card_materia("Editar matéria", "btn-primary", card_box)
+    botao_editar.dataset.bsTarget = "#modal-editar-materia"
+
+    let botao_apagar = criar_botao_card_materia("Apagar metéria", "btn-danger", card_box)
     botao_apagar.dataset.bsTarget = "#modal-apagar-materia"
-    botao_apagar.addEventListener("click", () => {
-        card_tarefa_atual = card_box
-    })
 
     card_footer.className += ' bg-dark'
     card_footer.append(botao_tarefa, botao_apagar)
@@ -151,10 +146,14 @@ function criar_botao_card_tarefa(texto_botao, classe_cor) {
     return botao
 }
 
-function criar_botao_card_materia(texto_botao, classe_cor) {
+function criar_botao_card_materia(texto_botao, classe_cor, card_atual) {
     let botao = document.createElement("button")
     botao.className = `btn ${classe_cor} mb-2 me-3`
     botao.innerText = texto_botao
+    botao.dataset.bsToggle = "modal"
+    botao.addEventListener("click", () => {
+        card_materia_atual = card_atual
+    })
     return botao
 }
 

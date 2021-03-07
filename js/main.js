@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let main_div = document.querySelector("#main-div")
     let botao_criar_materia = document.querySelector("#btn-criar-materia")
     let botao_criar_tarefa = document.querySelector("#btn-criar-tarefa")
+    let botao_editar_materia = document.querySelector("#btn-editar-materia")
     let botao_apagar_materia = document.querySelector("#btn-apagar-materia")
     let botao_editar_tarefa = document.querySelector("#btn-editar-tarefa")
     let botao_remover_tarefas_prontas = document.querySelector("#btn-remover-tarefas-prontas")
@@ -43,6 +44,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else {
             alert("Preencha todos os dados !")
+        }
+    })
+
+    botao_editar_materia.addEventListener("click", () => {
+        let input_titulo_materia = document.querySelector("#input-editar-nome-materia")
+
+        if (input_titulo_materia.value.length == 0) {
+            let nome_materia_antigo = card_materia_atual.dataset.nome_materia
+            let dados_materia = localStorage.getItem(nome_materia_antigo)
+            localStorage.removeItem(nome_materia_antigo)
+            localStorage.setItem(input_titulo_materia.value, dados_materia)
+
+            card_materia_atual.dataset.nome_materia = input_titulo_materia.value
+            card_materia_atual.children[0].children[0].innerText = input_titulo_materia.value
+
+            input_titulo_materia.value = ''
+            
         }
     })
 
