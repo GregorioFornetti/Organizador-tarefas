@@ -50,17 +50,18 @@ document.addEventListener("DOMContentLoaded", () => {
     botao_editar_materia.addEventListener("click", () => {
         let input_titulo_materia = document.querySelector("#input-editar-nome-materia")
 
-        if (input_titulo_materia.value.length == 0) {
+        if (input_titulo_materia.value.length > 0) {
             let nome_materia_antigo = card_materia_atual.dataset.nome_materia
             let dados_materia = localStorage.getItem(nome_materia_antigo)
             localStorage.removeItem(nome_materia_antigo)
             localStorage.setItem(input_titulo_materia.value, dados_materia)
 
             card_materia_atual.dataset.nome_materia = input_titulo_materia.value
-            card_materia_atual.children[0].children[0].innerText = input_titulo_materia.value
+            card_materia_atual.querySelector("h2").innerText = input_titulo_materia.value
 
-            input_titulo_materia.value = ''
-            
+            alert("Matéria alterada com sucesso !")
+        } else {
+            alert("Você precisa dar um titulo para a sua matéria !")
         }
     })
 

@@ -46,6 +46,9 @@ function criar_card_materia(titulo_materia) {
 
     let botao_editar = criar_botao_card_materia("Editar matéria", "btn-primary", card_box)
     botao_editar.dataset.bsTarget = "#modal-editar-materia"
+    botao_editar.addEventListener("click", () => {
+        document.querySelector("#input-editar-nome-materia").value = titulo_materia
+    })
 
     let botao_apagar = criar_botao_card_materia("Apagar metéria", "btn-danger", card_box)
     botao_apagar.dataset.bsTarget = "#modal-apagar-materia"
